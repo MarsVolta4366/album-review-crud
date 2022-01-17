@@ -17,6 +17,9 @@ connection.once("open", () => {
     console.log("Connected to MongoDB")
 })
 
+const albumsRouter = require("./routes/albums")
+app.use("/albums", albumsRouter)
+
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`)
 })
