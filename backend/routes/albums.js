@@ -19,7 +19,31 @@ router.route("/add").post((req, res) => {
     })
 
     newAlbum.save()
-        .then(() => res.json("Album added!"))
+        .then(() => res.json("Album added"))
+        .catch(err => res.status(400).json("Error: " + err))
+})
+
+// GET ALBUM BY ID
+router.route("/:id").get((req, res) => {
+    Album.findById(req.params.id)
+        .populate({
+            path: "reviews"
+        })
+        .then(album => res.json(album))
+        .catch(err => res.status(400).json("Error: " + err))
+})
+
+// DELETE ALBUM
+router.route("/:id").delete((req, res) => {
+    Album.findByIdAndDelete(req.params.id)
+        .then(() => res.json("Album deleted"))
+        .catch(err => res.status(400).json("Error: " + err))
+})
+
+// UPDATE ALBUM
+router.route("/:id").put((req, res) => {
+    Album.findByIdAndUpdate(req.params.id, req.body)
+        .then(() => res.json("Album updated"))
         .catch(err => res.status(400).json("Error: " + err))
 })
 

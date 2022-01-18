@@ -9,11 +9,15 @@ router.route("/").get((req, res) => {
 
 router.route("/add").post((req, res) => {
     const author = req.body.author
+    const stars = Number(req.body.stars)
     const content = req.body.content
+    const album = req.body.album
 
     const newReview = new Review({
         author, 
-        content
+        stars,
+        content,
+        album
     })
 
     newReview.save()
