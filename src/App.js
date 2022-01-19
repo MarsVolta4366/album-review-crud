@@ -10,12 +10,14 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Navbar />
-        <br />
-        <Routes>
-          <Route exact path="/" element={<AlbumsGallery />} />
-          <Route path="/newAlbum" element={<NewAlbum />} />
-        </Routes>
+        <div className="container">
+          <Navbar />
+          <br />
+          <Routes>
+            <Route exact path="/" element={<AlbumsGallery />} />
+            <Route path="/newAlbum" element={<NewAlbum />} />
+          </Routes>
+        </div>
       </Router>
     </div>
   )
