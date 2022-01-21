@@ -1,7 +1,5 @@
-import { render } from "@testing-library/react"
 import axios from "axios"
-import { useEffect, useState } from "react"
-import {Redirect} from "react-router-dom"
+import { useState } from "react"
 
 const NewAlbum = () => {
 
@@ -17,7 +15,7 @@ const NewAlbum = () => {
             releaseYear: releaseYear
         }
         axios.post("http://localhost:5000/albums/add", album)
-        document.getElementById("newAlbumForm").reset()
+        window.location = "/"
     }
 
     return (

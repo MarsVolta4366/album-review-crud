@@ -2,15 +2,21 @@ const AlbumsGallery = (props) => {
 
     let albums = props.data
     
-    if(albums) {
-        albums = props.data.map((album, index) => {
-            return (
-                <li key={index}>{album.name}</li>
-            )
-        })
-    } else {
-        albums = "No albums found"
-    }
+    // if(albums) {
+    //     albums = props.data.map((album, index) => {
+    //         return (
+    //             <li key={index}>{album.name}</li>
+    //         )
+    //     })
+    // } else {
+    //     albums = "No albums found"
+    // }
+
+    albums = props.data.map((album, index) => {
+        return (
+            <li key={index}>{album.name}</li>
+        )
+    })
 
     return (
         <div>
