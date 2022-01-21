@@ -1,4 +1,3 @@
-// Supsense loading isn't showing up
 import './App.css'
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -6,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import AlbumsGallery from './components/AlbumsGallery'
 import NewAlbum from './components/NewAlbum'
 import Navbar from './components/Navbar'
-import { Suspense, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function App() {
 
@@ -19,11 +18,9 @@ function App() {
   }, [])
 
   const renderGallery = () => {
-    if(data) {
+    if (data) {
       return (
-        <Suspense fallback={<h1>Loading...</h1>}>
-          <AlbumsGallery data={data} />
-        </Suspense>
+        <AlbumsGallery data={data} />
       )
     }
   }
@@ -35,9 +32,9 @@ function App() {
           <Navbar />
           <br />
           <Routes>
-              <Route exact path="/" element={
-                renderGallery()
-              } />
+            <Route exact path="/" element={
+              renderGallery()
+            } />
             <Route path="/newAlbum" element={<NewAlbum />} />
           </Routes>
         </div>
