@@ -5,8 +5,18 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import AlbumsGallery from './components/AlbumsGallery'
 import NewAlbum from './components/NewAlbum'
 import Navbar from './components/Navbar'
+import { Suspense, useEffect, useState } from 'react'
 
 function App() {
+
+  let [data, setData] = useState()
+
+  useEffect(() => {
+    fetch("http://localhost:5000/albums")
+      .then(response => response.json())
+      .then(resData => setData(resData))
+  }, [])
+
   return (
     <div className="App">
       <Router>
@@ -14,7 +24,11 @@ function App() {
           <Navbar />
           <br />
           <Routes>
-            <Route exact path="/" element={<AlbumsGallery />} />
+              <Route exact path="/" element={
+                <Suspense fallback={<h1>Loading...</h1>}>
+                  <AlbumsGallery data={data} />
+                </Suspense>
+              } />
             <Route path="/newAlbum" element={<NewAlbum />} />
           </Routes>
         </div>

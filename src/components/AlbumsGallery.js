@@ -1,6 +1,24 @@
-const AlbumsGallery = () => {
+const AlbumsGallery = (props) => {
+
+    let albums = props.data
+    
+    if(albums) {
+        albums = props.data.map((album, index) => {
+            return (
+                <li key={index}>{album.name}</li>
+            )
+        })
+    } else {
+        albums = "No albums found"
+    }
+
     return (
-        <h1>Albums Gallery</h1>
+        <div>
+            <h1>Albums Gallery</h1>
+            <ul>
+                {albums}
+            </ul>
+        </div>
     )
 }
 
