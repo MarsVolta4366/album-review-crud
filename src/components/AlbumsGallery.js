@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css"
+import { Link } from "react-router-dom"
 
 const AlbumsGallery = (props) => {
 
@@ -11,8 +12,8 @@ const AlbumsGallery = (props) => {
                     <h5 className="card-title">Album: {album.name}</h5>
                     <p className="card-text">Artist: {album.artist}</p>
                     <p className="card-text">Release Year: {album.releaseYear}</p>
-                    <a href="#" className="btn btn-primary">Edit</a>
-                    <a href="#" className="btn btn-danger">Delete</a>
+                    <Link to="/editAlbum" className="btn btn-primary">Edit</Link>
+                    <Link to="/deleteAlbum" className="btn btn-danger">Delete</Link>
                 </div>
             </div>
         )

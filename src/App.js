@@ -1,11 +1,14 @@
 import './App.css'
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css"
+import { useEffect, useState } from 'react'
+
 // COMPONENTS
 import AlbumsGallery from './components/AlbumsGallery'
 import NewAlbum from './components/NewAlbum'
 import Navbar from './components/Navbar'
-import { useEffect, useState } from 'react'
+import EditAlbum from './components/EditAlbum'
+import DeleteAlbum from './components/DeleteAlbum'
 
 function App() {
 
@@ -36,6 +39,8 @@ function App() {
               renderGallery()
             } />
             <Route path="/newAlbum" element={<NewAlbum />} />
+            <Route path="/editAlbum" element={<EditAlbum />} />
+            <Route path="/deleteAlbum" element={<DeleteAlbum />} />
           </Routes>
         </div>
       </Router>
