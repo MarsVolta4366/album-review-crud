@@ -33,6 +33,12 @@ function App() {
     window.location("/")
   }
 
+  const renderEditAlbum = () => {
+    return (
+      <EditAlbum />
+    )
+  }
+
   return (
     <div className="App">
       <Router>
@@ -44,7 +50,9 @@ function App() {
               renderGallery()
             } />
             <Route path="/newAlbum" element={<NewAlbum />} />
-            <Route path="/editAlbum" element={<EditAlbum />} />
+            <Route path="/editAlbum/:albumIdParams" element={
+              renderEditAlbum()
+            } />
           </Routes>
         </div>
       </Router>

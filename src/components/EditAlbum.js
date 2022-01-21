@@ -1,6 +1,10 @@
+import { useParams } from 'react-router-dom'
+
 const EditAlbum = () => {
+    const { albumIdParams } = useParams()
+
     return (
-        <div>Edit album</div>
+        <div>{albumIdParams}</div>
     )
 }
 

@@ -13,7 +13,7 @@ const AlbumsGallery = (props) => {
                     <p className="card-text">Artist: {album.artist}</p>
                     <p className="card-text">Release Year: {album.releaseYear}</p>
                     <Link to="/" className="btn btn-primary">See Reviews</Link>
-                    <Link to="/editAlbum" className="btn btn-primary">Edit</Link>
+                    <Link to={`/editAlbum/${album.id}`} className="btn btn-primary">Edit</Link>
                     <Link to="/" className="btn btn-danger" onClick={() => props.deleteAlbum(album.id)}>Delete</Link>
                 </div>
             </div>
