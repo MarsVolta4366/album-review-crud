@@ -2,13 +2,13 @@ import './App.css'
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css"
 import { useEffect, useState } from 'react'
+import axios from "axios"
 
 // COMPONENTS
 import AlbumsGallery from './components/AlbumsGallery'
 import NewAlbum from './components/NewAlbum'
 import Navbar from './components/Navbar'
 import EditAlbum from './components/EditAlbum'
-import DeleteAlbum from './components/DeleteAlbum'
 
 function App() {
 
@@ -23,9 +23,14 @@ function App() {
   const renderGallery = () => {
     if (data) {
       return (
-        <AlbumsGallery data={data} />
+        <AlbumsGallery data={data} deleteAlbum={deleteAlbum} />
       )
     }
+  }
+
+  const deleteAlbum = (albumId) => {
+    axios.delete(`http://localhost:5000/albums/${albumId}`)
+    window.location("/")
   }
 
   return (
@@ -40,7 +45,6 @@ function App() {
             } />
             <Route path="/newAlbum" element={<NewAlbum />} />
             <Route path="/editAlbum" element={<EditAlbum />} />
-            <Route path="/deleteAlbum" element={<DeleteAlbum />} />
           </Routes>
         </div>
       </Router>
