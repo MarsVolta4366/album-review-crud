@@ -9,6 +9,7 @@ import AlbumsGallery from './components/AlbumsGallery'
 import NewAlbum from './components/NewAlbum'
 import Navbar from './components/Navbar'
 import EditAlbum from './components/EditAlbum'
+import AlbumShow from './components/AlbumShow'
 
 function App() {
 
@@ -53,6 +54,7 @@ function App() {
             <Route path="/editAlbum/:albumIdParams" element={
               renderEditAlbum()
             } />
+            <Route path="/showAlbum/:albumIdParams" element={<AlbumShow />} />
           </Routes>
         </div>
       </Router>
