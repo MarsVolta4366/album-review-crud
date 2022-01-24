@@ -9,10 +9,11 @@ const AlbumsGallery = (props) => {
         return (
             <div className="card" key={index}>
                 <div className="card-body">
-                    <h5 className="card-title">Album: {album.name}</h5>
+                    <Link to={`/showAlbum/${album.id}`}>
+                        <h5 className="card-title">Album: {album.name}</h5>
+                    </Link>
                     <p className="card-text">Artist: {album.artist}</p>
                     <p className="card-text">Release Year: {album.releaseYear}</p>
-                    <Link to="/" className="btn btn-primary">See Reviews</Link>
                     <Link to={`/editAlbum/${album.id}`} className="btn btn-primary">Edit</Link>
                     <Link to="/" className="btn btn-danger" onClick={() => props.deleteAlbum(album.id)}>Delete</Link>
                 </div>
