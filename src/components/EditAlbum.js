@@ -28,7 +28,6 @@ const EditAlbum = () => {
                 setArtist(resData.data.artist)
                 setReleaseYear(resData.data.releaseYear)
             })
-
     }, [])
 
     return (
