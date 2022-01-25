@@ -3,8 +3,9 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react/cjs/react.development"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
+import { Link } from "react-router-dom"
 
-export default function AlbumShow() {
+export default function AlbumShow(props) {
 
     const { albumIdParams } = useParams()
     // Album state variables
@@ -60,6 +61,9 @@ export default function AlbumShow() {
             <h1>{name}</h1>
             <p>Artist: {artist}</p>
             <p>Release Year: {releaseYear}</p>
+
+            <Link to={`/editAlbum/${albumIdParams}`} className="btn btn-primary">Edit</Link>
+            <Link to="/" className="btn btn-danger" onClick={() => props.deleteAlbum(albumIdParams)}>Delete</Link>
 
             <h2>Write a Review</h2>
             <Form>

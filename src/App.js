@@ -54,7 +54,7 @@ function App() {
             <Route path="/editAlbum/:albumIdParams" element={
               renderEditAlbum()
             } />
-            <Route path="/showAlbum/:albumIdParams" element={<AlbumShow />} />
+            <Route path="/showAlbum/:albumIdParams" element={<AlbumShow deleteAlbum={deleteAlbum} />} />
           </Routes>
         </div>
       </Router>
