@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css"
 import { useEffect, useState } from 'react'
 import axios from "axios"

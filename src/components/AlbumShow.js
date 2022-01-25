@@ -26,7 +26,7 @@ export default function AlbumShow(props) {
                 setReleaseYear(resData.data.releaseYear)
                 setReviews(resData.data.reviews)
             })
-    }, [])
+    }, [albumIdParams])
 
     const onSubmit = (e) => {
         e.preventDefault()
