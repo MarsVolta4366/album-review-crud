@@ -19,7 +19,7 @@ export default function AlbumShow(props) {
     let [reviews, setReviews] = useState([])
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/albums/${albumIdParams}`)
+        axios.get(`https://album-review-crud-backend.herokuapp.com/albums/${albumIdParams}`)
             .then(resData => {
                 setName(resData.data.name)
                 setArtist(resData.data.artist)
@@ -36,7 +36,7 @@ export default function AlbumShow(props) {
             content: content,
             album: albumIdParams
         }
-        axios.post("http://localhost:5000/reviews/add", review)
+        axios.post("https://album-review-crud-backend.herokuapp.com/reviews/add", review)
         window.location = `/showAlbum/${albumIdParams}`
     }
 

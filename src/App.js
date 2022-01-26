@@ -21,7 +21,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetch("http://localhost:5000/albums")
+    fetch("https://album-review-crud-backend.herokuapp.com/albums")
       .then(response => response.json())
       .then(resData => setData(resData))
   }, [])
@@ -35,7 +35,7 @@ function App() {
   }
 
   const deleteAlbum = (albumId) => {
-    axios.delete(`http://localhost:5000/albums/${albumId}`)
+    axios.delete(`https://album-review-crud-backend.herokuapp.com/albums/${albumId}`)
     window.location("/")
   }
 

@@ -14,7 +14,7 @@ const NewAlbum = (props) => {
             artist: artist,
             releaseYear: releaseYear
         }
-        axios.post("http://localhost:5000/albums/add", album)
+        axios.post("https://album-review-crud-backend.herokuapp.com/albums/add", album)
         window.location = "/"
     }
 

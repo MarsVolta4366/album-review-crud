@@ -17,18 +17,18 @@ const EditAlbum = (props) => {
             artist: artist,
             releaseYear: releaseYear
         }
-        axios.put(`http://localhost:5000/albums/${albumIdParams}`, album)
+        axios.put(`https://album-review-crud-backend.herokuapp.com/albums/${albumIdParams}`, album)
         window.location = `/showAlbum/${albumIdParams}`
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/albums/${albumIdParams}`)
+        axios.get(`https://album-review-crud-backend.herokuapp.com/albums/${albumIdParams}`)
             .then(resData => {
                 setName(resData.data.name)
                 setArtist(resData.data.artist)
                 setReleaseYear(resData.data.releaseYear)
             })
-    }, [])
+    }, [albumIdParams])
 
     return (
         <div>
