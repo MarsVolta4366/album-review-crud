@@ -45,12 +45,16 @@ export default function AlbumShow(props) {
     )
     if (reviews.length > 0) {
         reviewsDisplay = reviews.map((rev, index) => {
+            let starsDisplay = ""
+            for(let i = 0; i < rev.stars; i++) {
+                starsDisplay += "⭐️"
+            }
             return (
-                <div key={index}>
-                    <hr />
-                    <p>Author: {rev.author}</p>
-                    <p>Stars: {rev.stars}</p>
-                    <p>Content: {rev.content}</p>
+                <div key={index} style={{width: "70%", margin: "0 auto", borderTop: "1px solid lightgray", padding: "10px"}}>
+                    <i class="bi bi-person-circle" style={{fontSize: "20px"}}></i>
+                    <span style={{margin: "10px"}}>{rev.author}</span>
+                    <p>{starsDisplay}</p>
+                    <p>{rev.content}</p>
                 </div>
             )
         })
@@ -66,7 +70,7 @@ export default function AlbumShow(props) {
             <Link to="/" className="btn btn-danger" onClick={() => props.deleteAlbum(albumIdParams)}>Delete</Link>
 
             <h2>Write a Review</h2>
-            <Form>
+            <Form style={props.formStyle}>
                 <Form.Group className="mb-3">
                     <Form.Label>Author</Form.Label>
                     <Form.Control type="text" placeholder="Author Name" onChange={(e) => setAuthor(e.target.value)} />

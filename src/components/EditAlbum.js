@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useState } from 'react/cjs/react.development'
 
-const EditAlbum = () => {
+const EditAlbum = (props) => {
 
     const { albumIdParams } = useParams()
     let [name, setName] = useState("")
@@ -18,7 +18,7 @@ const EditAlbum = () => {
             releaseYear: releaseYear
         }
         axios.put(`http://localhost:5000/albums/${albumIdParams}`, album)
-        window.location = "/"
+        window.location = `/showAlbum/${albumIdParams}`
     }
 
     useEffect(() => {
@@ -33,7 +33,7 @@ const EditAlbum = () => {
     return (
         <div>
             <h1>Edit Album</h1>
-            <form>
+            <form style={props.formStyle}>
                 <div className="form-group">
                     <label htmlFor="name">Album Name: </label>
                     <input type="text" name="name" id="name" required className="form-control" defaultValue={name} onChange={(e) => setName(e.target.value)} />

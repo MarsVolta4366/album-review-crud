@@ -15,6 +15,11 @@ function App() {
 
   let [data, setData] = useState()
 
+  const formStyle = {
+    width: "70%",
+    margin: "0 auto"
+  }
+
   useEffect(() => {
     fetch("http://localhost:5000/albums")
       .then(response => response.json())
@@ -36,7 +41,7 @@ function App() {
 
   const renderEditAlbum = () => {
     return (
-      <EditAlbum />
+      <EditAlbum formStyle={formStyle} />
     )
   }
 
@@ -50,11 +55,11 @@ function App() {
             <Route exact path="/" element={
               renderGallery()
             } />
-            <Route path="/newAlbum" element={<NewAlbum />} />
+            <Route path="/newAlbum" element={<NewAlbum formStyle={formStyle} />} />
             <Route path="/editAlbum/:albumIdParams" element={
               renderEditAlbum()
             } />
-            <Route path="/showAlbum/:albumIdParams" element={<AlbumShow deleteAlbum={deleteAlbum} />} />
+            <Route path="/showAlbum/:albumIdParams" element={<AlbumShow deleteAlbum={deleteAlbum} formStyle={formStyle} />} />
           </Routes>
         </div>
       </Router>

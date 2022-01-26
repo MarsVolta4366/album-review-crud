@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useState } from "react"
 
-const NewAlbum = () => {
+const NewAlbum = (props) => {
 
     let [name, setName] = useState("")
     let [artist, setArtist] = useState("")
@@ -21,7 +21,7 @@ const NewAlbum = () => {
     return (
         <div>
             <h1>Add a New Album</h1>
-            <form id="newAlbumForm">
+            <form id="newAlbumForm" style={props.formStyle}>
                 <div className="form-group">
                     <label htmlFor="name">Album Name: </label>
                     <input type="text" name="name" id="name" required className="form-control" onChange={(e) => setName(e.target.value)} />
