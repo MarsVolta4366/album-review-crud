@@ -32,7 +32,7 @@ const NewAlbum = (props) => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="releaseYear">Release Year: </label>
-                    <input type="text" name="releaseYear" id="releaseYear" className="form-control" onChange={(e) => setReleaseYear(Number(e.target.value))} />
+                    <input type="text" name="releaseYear" id="releaseYear" required className="form-control" onChange={(e) => setReleaseYear(Number(e.target.value))} />
                 </div>
                 <input type="submit" value="Add Album" className="btn btn-primary" onClick={(e) => onSubmit(e)} />
             </form>

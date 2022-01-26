@@ -46,13 +46,13 @@ export default function AlbumShow(props) {
     if (reviews.length > 0) {
         reviewsDisplay = reviews.map((rev, index) => {
             let starsDisplay = ""
-            for(let i = 0; i < rev.stars; i++) {
+            for (let i = 0; i < rev.stars; i++) {
                 starsDisplay += "⭐️"
             }
             return (
-                <div key={index} style={{width: "70%", margin: "0 auto", borderTop: "1px solid lightgray", padding: "10px"}}>
-                    <i class="bi bi-person-circle" style={{fontSize: "20px"}}></i>
-                    <span style={{margin: "10px"}}>{rev.author}</span>
+                <div key={index} style={{ width: "70%", margin: "0 auto", borderTop: "1px solid lightgray", padding: "10px" }}>
+                    <i className="bi bi-person-circle" style={{ fontSize: "20px" }}></i>
+                    <span style={{ margin: "10px" }}>{rev.author}</span>
                     <p>{starsDisplay}</p>
                     <p>{rev.content}</p>
                 </div>
@@ -69,25 +69,26 @@ export default function AlbumShow(props) {
             <Link to={`/editAlbum/${albumIdParams}`} className="btn btn-primary">Edit</Link>
             <Link to="/" className="btn btn-danger" onClick={() => props.deleteAlbum(albumIdParams)}>Delete</Link>
 
-            <h2>Write a Review</h2>
-            <Form style={props.formStyle}>
-                <Form.Group className="mb-3">
-                    <Form.Label>Author</Form.Label>
-                    <Form.Control type="text" placeholder="Author Name" onChange={(e) => setAuthor(e.target.value)} />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Label>Stars</Form.Label>
-                    <Form.Control type="number" placeholder="Stars" onChange={(e) => setStars(e.target.value)} />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Label>Review</Form.Label>
-                    <Form.Control as="textarea" aria-label="With textarea" onChange={(e) => setContent(e.target.value)} />
-                </Form.Group>
-                <Button variant="primary" type="submit" onClick={(e) => onSubmit(e)}>
-                    Submit
-                </Button>
-            </Form>
-
+            <div style={{ margin: "50px 0 50px 0" }}>
+                <h2>Write a Review</h2>
+                <Form style={props.formStyle}>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Author</Form.Label>
+                        <Form.Control type="text" placeholder="Author Name" onChange={(e) => setAuthor(e.target.value)} />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Stars</Form.Label>
+                        <Form.Control type="number" placeholder="Stars" onChange={(e) => setStars(e.target.value)} />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Review</Form.Label>
+                        <Form.Control as="textarea" aria-label="With textarea" onChange={(e) => setContent(e.target.value)} />
+                    </Form.Group>
+                    <Button variant="primary" type="submit" onClick={(e) => onSubmit(e)}>
+                        Submit
+                    </Button>
+                </Form>
+            </div>
             <h2>Reviews</h2>
             {reviewsDisplay}
         </div>
