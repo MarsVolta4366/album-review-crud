@@ -36,7 +36,8 @@ function App() {
 
   const deleteAlbum = (albumId) => {
     axios.delete(`https://album-review-crud-backend.herokuapp.com/albums/${albumId}`)
-    window.location("/")
+      .then(() => window.location = "/")
+    
   }
 
   const renderEditAlbum = () => {
