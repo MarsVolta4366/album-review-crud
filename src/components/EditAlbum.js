@@ -1,7 +1,6 @@
 import axios from 'axios'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { useState } from 'react/cjs/react.development'
 
 const EditAlbum = (props) => {
 
