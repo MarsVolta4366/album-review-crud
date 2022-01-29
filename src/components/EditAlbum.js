@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const EditAlbum = (props) => {
 
@@ -9,7 +9,7 @@ const EditAlbum = (props) => {
     let [name, setName] = useState("")
     let [artist, setArtist] = useState("")
     let [releaseYear, setReleaseYear] = useState()
-    let history = useHistory()
+    let navigate = useNavigate()
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -20,7 +20,7 @@ const EditAlbum = (props) => {
         }
         axios.put(`https://album-review-crud-backend.herokuapp.com/albums/${albumIdParams}`, album)
         // .then(() => window.location = `/showAlbum/${albumIdParams}`)
-        history.push(`/showAlbum/${albumIdParams}`)
+        navigate.push(`/showAlbum/${albumIdParams}`)
     }
 
     useEffect(() => {
