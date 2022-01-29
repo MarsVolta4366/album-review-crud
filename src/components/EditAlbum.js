@@ -19,8 +19,8 @@ const EditAlbum = (props) => {
             releaseYear: releaseYear
         }
         axios.put(`https://album-review-crud-backend.herokuapp.com/albums/${albumIdParams}`, album)
-            .then(() => navigate(`/showAlbum/${albumIdParams}`))
-        // .then(() => window.location = `/showAlbum/${albumIdParams}`)
+            // .then(() => navigate(`/showAlbum/${albumIdParams}`))
+        window.location = `/showAlbum/${albumIdParams}`
     }
 
     useEffect(() => {

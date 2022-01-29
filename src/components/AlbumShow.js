@@ -38,8 +38,7 @@ export default function AlbumShow(props) {
             album: albumIdParams
         }
         axios.post("https://album-review-crud-backend.herokuapp.com/reviews/add", review)
-            .then(() => navigate(`/showAlbum/${albumIdParams}`))
-        // window.location = `/showAlbum/${albumIdParams}`
+        window.location = `/showAlbum/${albumIdParams}`
     }
 
     let reviewsDisplay = (
