@@ -20,7 +20,7 @@ const EditAlbum = (props) => {
         }
         axios.put(`https://album-review-crud-backend.herokuapp.com/albums/${albumIdParams}`, album)
         // .then(() => window.location = `/showAlbum/${albumIdParams}`)
-        navigate.push(`/showAlbum/${albumIdParams}`)
+        navigate(`/showAlbum/${albumIdParams}`)
     }
 
     useEffect(() => {
