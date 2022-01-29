@@ -1,4 +1,3 @@
-// I think everything is working except add a review
 import './App.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -38,7 +37,7 @@ function App() {
   const deleteAlbum = (albumId) => {
     axios.delete(`https://album-review-crud-backend.herokuapp.com/albums/${albumId}`)
       .then(() => window.location = "/")
-    
+
   }
 
   const renderEditAlbum = () => {
