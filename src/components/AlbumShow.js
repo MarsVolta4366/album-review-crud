@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
@@ -8,6 +8,7 @@ import { Link } from "react-router-dom"
 export default function AlbumShow(props) {
 
     const { albumIdParams } = useParams()
+    let navigate = useNavigate()
     // Album state variables
     let [name, setName] = useState("")
     let [artist, setArtist] = useState("")
@@ -37,7 +38,8 @@ export default function AlbumShow(props) {
             album: albumIdParams
         }
         axios.post("https://album-review-crud-backend.herokuapp.com/reviews/add", review)
-            .then(() => window.location = `/showAlbum/${albumIdParams}`)
+            .then(() => navigate(`/showAlbum/${albumIdParams}`))
+            // window.location = `/showAlbum/${albumIdParams}`
     }
 
     let reviewsDisplay = (
