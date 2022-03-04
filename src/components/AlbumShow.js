@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 import { Link } from "react-router-dom"
+import { Pencil, Trash } from "react-bootstrap-icons"
 
 export default function AlbumShow(props) {
 
@@ -71,13 +72,16 @@ export default function AlbumShow(props) {
     return (
         <div>
             <h1>{name}</h1>
-            <p>Artist: {artist}</p>
-            <p>Release Year: {releaseYear}</p>
-            <Link to={`/editAlbum/${albumIdParams}`} className="btn btn-primary">Edit</Link>
-            <Link to="/" className="btn btn-danger" onClick={() => props.deleteAlbum(albumIdParams)}>Delete</Link>
+            <p className="mySubtitle">{artist} &bull; {releaseYear}</p>
+            <Link to={`/editAlbum/${albumIdParams}`}>
+                <Pencil className="myIcon" />
+            </Link>
+            <Link to="/" onClick={() => props.deleteAlbum(albumIdParams)}>
+                <Trash className="myIcon" />
+            </Link>
             <div style={{ margin: "50px 0 50px 0" }}>
                 <h2>Write a Review</h2>
-                <Form style={props.formStyle}>
+                <Form className="albumForm">
                     <Form.Group className="mb-3">
                         <Form.Label>Author</Form.Label>
                         <Form.Control type="text" placeholder="Author Name" onChange={(e) => setAuthor(e.target.value)} />
@@ -90,9 +94,7 @@ export default function AlbumShow(props) {
                         <Form.Label>Review</Form.Label>
                         <Form.Control as="textarea" aria-label="With textarea" onChange={(e) => setContent(e.target.value)} />
                     </Form.Group>
-                    <Button variant="primary" type="submit" onClick={(e) => submitReview(e)}>
-                        Submit
-                    </Button>
+                    <input type="submit" value="Submit" className="myButton" onClick={(e) => submitReview(e)} />
                 </Form>
             </div>
             <h2>Reviews</h2>

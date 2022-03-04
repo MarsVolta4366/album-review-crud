@@ -41,18 +41,17 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <div className="container">
+        <div className="myContainer">
           <Navbar />
-          <br />
           <Routes>
             <Route exact path="/" element={
               <AlbumsGallery data={data} deleteAlbum={deleteAlbum} />
             } />
             <Route path="/newAlbum" element={
-              <NewAlbum formStyle={formStyle} />
+              <NewAlbum />
             } />
             <Route path="/editAlbum/:albumIdParams" element={
-              <EditAlbum formStyle={formStyle} />
+              <EditAlbum />
             } />
             <Route path="/showAlbum/:albumIdParams" element={
               <AlbumShow deleteAlbum={deleteAlbum} formStyle={formStyle} />

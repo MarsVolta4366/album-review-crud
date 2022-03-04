@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-const EditAlbum = (props) => {
+const EditAlbum = () => {
 
     const { albumIdParams } = useParams()
     let [name, setName] = useState("")
@@ -44,7 +44,7 @@ const EditAlbum = (props) => {
     return (
         <div>
             <h1>Edit Album</h1>
-            <form style={props.formStyle}>
+            <form className="albumForm">
                 <div className="form-group">
                     <label htmlFor="name">Album Name: </label>
                     <input type="text" name="name" id="name" required className="form-control" defaultValue={name} onChange={(e) => setName(e.target.value)} />
@@ -57,7 +57,7 @@ const EditAlbum = (props) => {
                     <label htmlFor="releaseYear">Release Year: </label>
                     <input type="text" name="releaseYear" id="releaseYear" className="form-control" defaultValue={releaseYear} onChange={(e) => setReleaseYear(Number(e.target.value))} />
                 </div>
-                <input type="submit" value="Submit Changes" className="btn btn-primary" onClick={(e) => submitEdit(e)} />
+                <input type="submit" value="Submit Changes" className="myButton" onClick={(e) => submitEdit(e)} />
             </form>
         </div>
     )

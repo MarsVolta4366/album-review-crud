@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const NewAlbum = (props) => {
+const NewAlbum = () => {
 
     let [name, setName] = useState("")
     let [artist, setArtist] = useState("")
@@ -26,7 +26,7 @@ const NewAlbum = (props) => {
     return (
         <div>
             <h1>Add a New Album</h1>
-            <form id="newAlbumForm" style={props.formStyle}>
+            <form className="albumForm">
                 <div className="form-group">
                     <label htmlFor="name">Album Name: </label>
                     <input type="text" name="name" id="name" required className="form-control" onChange={(e) => setName(e.target.value)} />
@@ -39,7 +39,7 @@ const NewAlbum = (props) => {
                     <label htmlFor="releaseYear">Release Year: </label>
                     <input type="text" name="releaseYear" id="releaseYear" required className="form-control" onChange={(e) => setReleaseYear(Number(e.target.value))} />
                 </div>
-                <input type="submit" value="Add Album" className="btn btn-primary" onClick={(e) => submitAlbum(e)} />
+                <input type="submit" value="Add Album" className="myButton" onClick={(e) => submitAlbum(e)} />
             </form>
         </div>
     )
