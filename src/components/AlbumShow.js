@@ -1,5 +1,4 @@
-import axios from "axios"
-import { useNavigate, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
@@ -8,7 +7,6 @@ import { Link } from "react-router-dom"
 export default function AlbumShow(props) {
 
     const { albumIdParams } = useParams()
-    let navigate = useNavigate()
     // Album state variables
     let [name, setName] = useState("")
     let [artist, setArtist] = useState("")
@@ -20,16 +18,18 @@ export default function AlbumShow(props) {
     let [reviews, setReviews] = useState([])
 
     useEffect(() => {
-        axios.get(`https://album-review-crud-backend.herokuapp.com/albums/${albumIdParams}`)
-            .then(resData => {
-                setName(resData.data.name)
-                setArtist(resData.data.artist)
-                setReleaseYear(resData.data.releaseYear)
-                setReviews(resData.data.reviews)
-            })
+        const fetchData = async () => {
+            const response = await fetch(`https://album-review-crud-backend.herokuapp.com/albums/${albumIdParams}`)
+            const resData = await response.json()
+            setName(resData.name)
+            setArtist(resData.artist)
+            setReleaseYear(resData.releaseYear)
+            setReviews(resData.reviews)
+        }
+        fetchData()
     }, [albumIdParams])
 
-    const onSubmit = (e) => {
+    const submitReview = async (e) => {
         e.preventDefault()
         const review = {
             author: author,
@@ -37,13 +37,20 @@ export default function AlbumShow(props) {
             content: content,
             album: albumIdParams
         }
-        axios.post("https://album-review-crud-backend.herokuapp.com/reviews/add", review)
+        await fetch("https://album-review-crud-backend.herokuapp.com/reviews/add", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(review)
+        })
         window.location = `/showAlbum/${albumIdParams}`
     }
 
     let reviewsDisplay = (
-        <p>No reviews yet</p>
+        <p>No reviews yet!</p>
     )
+
     if (reviews.length > 0) {
         reviewsDisplay = reviews.map((rev, index) => {
             let starsDisplay = ""
@@ -66,10 +73,8 @@ export default function AlbumShow(props) {
             <h1>{name}</h1>
             <p>Artist: {artist}</p>
             <p>Release Year: {releaseYear}</p>
-
             <Link to={`/editAlbum/${albumIdParams}`} className="btn btn-primary">Edit</Link>
             <Link to="/" className="btn btn-danger" onClick={() => props.deleteAlbum(albumIdParams)}>Delete</Link>
-
             <div style={{ margin: "50px 0 50px 0" }}>
                 <h2>Write a Review</h2>
                 <Form style={props.formStyle}>
@@ -85,7 +90,7 @@ export default function AlbumShow(props) {
                         <Form.Label>Review</Form.Label>
                         <Form.Control as="textarea" aria-label="With textarea" onChange={(e) => setContent(e.target.value)} />
                     </Form.Group>
-                    <Button variant="primary" type="submit" onClick={(e) => onSubmit(e)}>
+                    <Button variant="primary" type="submit" onClick={(e) => submitReview(e)}>
                         Submit
                     </Button>
                 </Form>

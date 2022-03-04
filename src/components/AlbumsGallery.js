@@ -2,9 +2,7 @@ import { Link } from "react-router-dom"
 
 const AlbumsGallery = (props) => {
 
-    let albums = props.data
-
-    albums = props.data.map((album, index) => {
+    let albums = props.data.map((album, index) => {
         return (
             <div className="card" key={index}>
                 <div className="card-body">

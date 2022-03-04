@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
@@ -9,25 +8,38 @@ const EditAlbum = (props) => {
     let [artist, setArtist] = useState("")
     let [releaseYear, setReleaseYear] = useState()
 
-    const onSubmit = (e) => {
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch(`https://album-review-crud-backend.herokuapp.com/albums/${albumIdParams}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            const resData = await response.json()
+            setName(resData.name)
+            setArtist(resData.artist)
+            setReleaseYear(resData.releaseYear)
+        }
+        fetchData()
+    }, [albumIdParams])
+
+    const submitEdit = async (e) => {
         e.preventDefault()
         const album = {
             name: name,
             artist: artist,
             releaseYear: releaseYear
         }
-        axios.put(`https://album-review-crud-backend.herokuapp.com/albums/${albumIdParams}`, album)
+        await fetch(`https://album-review-crud-backend.herokuapp.com/albums/${albumIdParams}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(album)
+        })
         window.location = `/showAlbum/${albumIdParams}`
     }
-
-    useEffect(() => {
-        axios.get(`https://album-review-crud-backend.herokuapp.com/albums/${albumIdParams}`)
-            .then(resData => {
-                setName(resData.data.name)
-                setArtist(resData.data.artist)
-                setReleaseYear(resData.data.releaseYear)
-            })
-    }, [albumIdParams])
 
     return (
         <div>
@@ -45,7 +57,7 @@ const EditAlbum = (props) => {
                     <label htmlFor="releaseYear">Release Year: </label>
                     <input type="text" name="releaseYear" id="releaseYear" className="form-control" defaultValue={releaseYear} onChange={(e) => setReleaseYear(Number(e.target.value))} />
                 </div>
-                <input type="submit" value="Submit Changes" className="btn btn-primary" onClick={(e) => onSubmit(e)} />
+                <input type="submit" value="Submit Changes" className="btn btn-primary" onClick={(e) => submitEdit(e)} />
             </form>
         </div>
     )

@@ -1,4 +1,3 @@
-import axios from "axios"
 import { useState } from "react"
 
 const NewAlbum = (props) => {
@@ -7,14 +6,20 @@ const NewAlbum = (props) => {
     let [artist, setArtist] = useState("")
     let [releaseYear, setReleaseYear] = useState()
 
-    const onSubmit = (e) => {
+    const submitAlbum = async (e) => {
         e.preventDefault()
         const album = {
             name: name,
             artist: artist,
             releaseYear: releaseYear
         }
-        axios.post("https://album-review-crud-backend.herokuapp.com/albums/add", album)
+        await fetch("https://album-review-crud-backend.herokuapp.com/albums/add", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(album)
+        })
         window.location = "/"
     }
 
@@ -34,7 +39,7 @@ const NewAlbum = (props) => {
                     <label htmlFor="releaseYear">Release Year: </label>
                     <input type="text" name="releaseYear" id="releaseYear" required className="form-control" onChange={(e) => setReleaseYear(Number(e.target.value))} />
                 </div>
-                <input type="submit" value="Add Album" className="btn btn-primary" onClick={(e) => onSubmit(e)} />
+                <input type="submit" value="Add Album" className="btn btn-primary" onClick={(e) => submitAlbum(e)} />
             </form>
         </div>
     )
