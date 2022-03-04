@@ -59,7 +59,7 @@ export default function AlbumShow(props) {
                 starsDisplay += "⭐️"
             }
             return (
-                <div key={index} style={{ width: "70%", margin: "0 auto", borderTop: "1px solid lightgray", padding: "10px" }}>
+                <div key={index} style={{ width: "70%", textAlign: "left", margin: "0 auto", borderTop: "1px solid lightgray", padding: "10px" }}>
                     <i className="bi bi-person-circle" style={{ fontSize: "20px" }}></i>
                     <span style={{ margin: "10px" }}>{rev.author}</span>
                     <p>{starsDisplay}</p>
@@ -70,7 +70,7 @@ export default function AlbumShow(props) {
     }
 
     return (
-        <div>
+        <div id="albumShowPageContainer">
             <h1>{name}</h1>
             <p className="mySubtitle">{artist} &bull; {releaseYear}</p>
             <Link to={`/editAlbum/${albumIdParams}`}>

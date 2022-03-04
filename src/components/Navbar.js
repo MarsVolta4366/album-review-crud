@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
-        <nav className="navbar navbar-dark navbar-expand-lg p-2" style={{backgroundColor: "black"}}>
+        <nav className="navbar navbar-dark navbar-expand-lg p-2 fixed-top" style={{backgroundColor: "black"}}>
             <Link to="/" className="navbar-brand">Album Tracker</Link>
             <div className="collapse navbar-collapse">
                 <ul className="navbar-nav mr-auto">

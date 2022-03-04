@@ -2,6 +2,7 @@
   text-align: center;
   background-color: #252525;
   height: 100vh;
+  padding-top: 70px
 }
 
 * {
@@ -22,6 +23,10 @@ form>div {
 .myCard {
   background-color: #585858 !important;
   margin: 10px;
+}
+
+.myCard:hover {
+  box-shadow: 1px 1px 5px 2px #c4c4c4;
 }
 
 .mySubtitle {
@@ -52,4 +57,8 @@ form>div {
 
 .myLink:hover {
   color: white !important;
+}
+
+#albumShowPageContainer {
+  background-color: #252525;
 }
