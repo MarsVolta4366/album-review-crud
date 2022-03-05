@@ -26,7 +26,7 @@ const NewAlbum = () => {
     return (
         <div>
             <h1>Add a New Album</h1>
-            <form className="albumForm">
+            <form className="albumForm" onSubmit={(e) => submitAlbum(e)}>
                 <div className="form-group">
                     <label htmlFor="name">Album Name: </label>
                     <input type="text" name="name" id="name" required className="form-control" onChange={(e) => setName(e.target.value)} />
@@ -39,7 +39,7 @@ const NewAlbum = () => {
                     <label htmlFor="releaseYear">Release Year: </label>
                     <input type="text" name="releaseYear" id="releaseYear" required className="form-control" onChange={(e) => setReleaseYear(Number(e.target.value))} />
                 </div>
-                <input type="submit" value="Add Album" className="myButton" onClick={(e) => submitAlbum(e)} />
+                <input type="submit" value="Add Album" className="myButton" />
             </form>
         </div>
     )

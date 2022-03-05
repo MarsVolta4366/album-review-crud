@@ -44,7 +44,7 @@ const EditAlbum = () => {
     return (
         <div>
             <h1>Edit Album</h1>
-            <form className="albumForm">
+            <form className="albumForm" onSubmit={(e) => submitEdit(e)}>
                 <div className="form-group">
                     <label htmlFor="name">Album Name: </label>
                     <input type="text" name="name" id="name" required className="form-control" defaultValue={name} onChange={(e) => setName(e.target.value)} />
@@ -55,9 +55,9 @@ const EditAlbum = () => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="releaseYear">Release Year: </label>
-                    <input type="text" name="releaseYear" id="releaseYear" className="form-control" defaultValue={releaseYear} onChange={(e) => setReleaseYear(Number(e.target.value))} />
+                    <input type="text" name="releaseYear" id="releaseYear" required className="form-control" defaultValue={releaseYear} onChange={(e) => setReleaseYear(Number(e.target.value))} />
                 </div>
-                <input type="submit" value="Submit Changes" className="myButton" onClick={(e) => submitEdit(e)} />
+                <input type="submit" value="Submit Changes" className="myButton" />
             </form>
         </div>
     )

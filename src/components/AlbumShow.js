@@ -81,20 +81,20 @@ export default function AlbumShow(props) {
             </Link>
             <div style={{ margin: "50px 0 50px 0" }}>
                 <h2>Write a Review</h2>
-                <Form className="albumForm">
+                <Form className="albumForm" onSubmit={(e) => submitReview(e)}>
                     <Form.Group className="mb-3">
                         <Form.Label>Author</Form.Label>
-                        <Form.Control type="text" placeholder="Author Name" onChange={(e) => setAuthor(e.target.value)} />
+                        <Form.Control type="text" placeholder="Author Name" required onChange={(e) => setAuthor(e.target.value)} />
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Stars</Form.Label>
-                        <Form.Control type="number" placeholder="Stars" onChange={(e) => setStars(e.target.value)} />
+                        <Form.Control type="number" placeholder="Stars" required onChange={(e) => setStars(e.target.value)} />
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Review</Form.Label>
-                        <Form.Control as="textarea" aria-label="With textarea" onChange={(e) => setContent(e.target.value)} />
+                        <Form.Control as="textarea" aria-label="With textarea" required onChange={(e) => setContent(e.target.value)} />
                     </Form.Group>
-                    <input type="submit" value="Submit" className="myButton" onClick={(e) => submitReview(e)} />
+                    <input type="submit" value="Submit" className="myButton" />
                 </Form>
             </div>
             <h2>Reviews</h2>

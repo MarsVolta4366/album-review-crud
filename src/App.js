@@ -12,10 +12,6 @@ import AlbumShow from './components/AlbumShow'
 
 function App() {
 
-  // FIX
-  // When you add multiple comments, a white bar appears at bottom of screen
-  // Style reviews display
-
   let [data, setData] = useState([])
 
   const formStyle = {
